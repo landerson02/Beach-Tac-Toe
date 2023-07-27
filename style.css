@@ -1,6 +1,6 @@
 @font-face {
-    font-family: WaterFont;
-    src: url("Assets/LemonJellyPersonalUse-dEqR.ttf") format('truetype');
+    font-family: LemonJelly;
+    src: url("Assets/LemonJelly.ttf") format('truetype');
 }
 body {
     background: url("Assets/beachbg.jpg") no-repeat center center fixed;
@@ -22,7 +22,7 @@ body {
 .title {
     font-size: 110px;
     letter-spacing: 6px;
-    font-family: WaterFont, serif;
+    font-family: LemonJelly, serif;
     color: rgb(123, 160, 70);
 
 
