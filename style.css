@@ -17,18 +17,16 @@ body {
     align-items: center;
     position: relative;
     height: 150px;
+
+    background: -webkit-linear-gradient(90deg, rgb(65, 90, 35), rgb(50, 150, 190));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .title {
     font-size: 110px;
     letter-spacing: 6px;
     font-family: LemonJelly, serif;
-    color: rgb(123, 160, 70);
-
-
-    /*background: -webkit-linear-gradient(#eee, #333);*/
-    /*-webkit-background-clip: text;*/
-    /*-webkit-text-fill-color: transparent; */
 }
 
 .help {
