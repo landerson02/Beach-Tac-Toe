@@ -1,0 +1,65 @@
+@font-face {
+    font-family: WaterFont;
+    src: url("Assets/LemonJellyPersonalUse-dEqR.ttf") format('truetype');
+}
+body {
+    background: url("Assets/beachbg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 150px;
+}
+
+.title {
+    font-size: 110px;
+    letter-spacing: 6px;
+    font-family: WaterFont, serif;
+    color: rgb(123, 160, 70);
+
+
+    /*background: -webkit-linear-gradient(#eee, #333);*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent; */
+}
+
+.help {
+    font-size: 48px;
+    font-family: "Comic Sans MS", Comic Sans Pro, serif;
+    margin-left: auto;
+    font-weight: bold;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    height: 450px;
+    width: 450px;
+    gap: 10px;
+}
+
+.cell {
+    border: 2px solid gray;
+    border-radius: 15px;
+    transition: transform .3s ease;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.cell:hover {
+    transform: scale(1.1);
+}
