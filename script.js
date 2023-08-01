@@ -43,5 +43,3 @@ const main = () => {
 
 }
 
-
-grid.init();

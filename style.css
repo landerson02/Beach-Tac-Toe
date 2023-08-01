@@ -27,17 +27,10 @@ body {
     font-family: LemonJelly, serif;
 }
 
-.help {
-    font-size: 48px;
-    font-family: "Comic Sans MS", Comic Sans Pro, serif;
-    margin-left: auto;
-    font-weight: bold;
-}
-
 #main-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .grid-container {
@@ -56,6 +49,10 @@ body {
     background-color: rgba(255, 255, 255, .3);
 }
 
+button.cell:hover {
+    transform: scale(1.1);
+}
+
 #restart-btn {
     grid-area: 4/1/4/4;
     font-size: 160px;
@@ -63,9 +60,7 @@ body {
     color: rgb(65, 90, 35);
 }
 
-.cell:hover {
-    transform: scale(1.1);
-}
+
 
 .ball {
     background: url("Assets/star.png") no-repeat center center;
@@ -81,4 +76,39 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: 90%;
+}
+
+#start-btn {
+    width: 300px;
+    height: 100px;
+    font-size: 60px;
+    font-family: LemonJelly, serif;
+}
+
+.icon-instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    font-size: 50px;
+    height: 100px;
+    font-family: LemonJelly, serif;
+}
+
+.icon-choice-grid {
+    width: 300px;
+    height: 375px;
+    display: grid;
+    gap: 10px;
+    grid-template-rows: .5fr repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.icon-choice-label {
+    grid-area: 1/1/2/3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: LemonJelly, serif;
+    font-size: 60px;
 }
