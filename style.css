@@ -47,6 +47,8 @@ body {
     border-radius: 15px;
     transition: transform .4s ease;
     background-color: rgba(255, 255, 255, .3);
+    font-size: 30px;
+    font-family: LemonJelly, serif;
 }
 
 button.cell:hover {
@@ -60,10 +62,8 @@ button.cell:hover {
     color: rgb(65, 90, 35);
 }
 
-
-
 .ball {
-    background: url("Assets/star.png") no-repeat center center;
+    background: url("Assets/ball.png") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -71,7 +71,23 @@ button.cell:hover {
 }
 
 .star {
-    background: url("Assets/ball.png") no-repeat center center;
+    background: url("Assets/star.png") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 90%;
+}
+
+.pineapple {
+    background: url("Assets/pineapple.png") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 45%;
+}
+
+.flamingo {
+    background: url("Assets/flamingo.png") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -95,7 +111,7 @@ button.cell:hover {
     font-family: LemonJelly, serif;
 }
 
-.icon-choice-grid {
+.choice-grid {
     width: 300px;
     height: 375px;
     display: grid;
@@ -104,7 +120,7 @@ button.cell:hover {
     grid-template-columns: repeat(2, 1fr);
 }
 
-.icon-choice-label {
+.choice-label {
     grid-area: 1/1/2/3;
     display: flex;
     justify-content: center;
