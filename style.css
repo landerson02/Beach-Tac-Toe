@@ -47,8 +47,12 @@ body {
     border-radius: 15px;
     transition: transform .4s ease;
     background-color: rgba(255, 255, 255, .3);
-    font-size: 30px;
+    font-size: 50px;
     font-family: LemonJelly, serif;
+}
+
+.selected {
+    background-color: rgba(255, 255, 255, .8);
 }
 
 button.cell:hover {
@@ -63,7 +67,9 @@ button.cell:hover {
 }
 
 .ball {
-    background: url("Assets/ball.png") no-repeat center center;
+    background-image: url("Assets/ball.png");
+    background-repeat: no-repeat;
+    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -71,7 +77,9 @@ button.cell:hover {
 }
 
 .star {
-    background: url("Assets/star.png") no-repeat center center;
+    background-image: url("Assets/star.png");
+    background-repeat: no-repeat;
+    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -79,7 +87,9 @@ button.cell:hover {
 }
 
 .pineapple {
-    background: url("Assets/pineapple.png") no-repeat center center;
+    background-image: url("Assets/pineapple.png");
+    background-repeat: no-repeat;
+    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -87,7 +97,9 @@ button.cell:hover {
 }
 
 .flamingo {
-    background: url("Assets/flamingo.png") no-repeat center center;
+    background-image: url("Assets/flamingo.png");
+    background-repeat: no-repeat;
+    background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
