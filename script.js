@@ -170,8 +170,6 @@ function isDraw(board) {
 }
 
 function start() {
-    let mainContainer = document.getElementById('main-container');
-
     let iconSelected = -1;
     let difSelected = -1;
     let startBtn = document.getElementById('start-btn');
@@ -227,6 +225,16 @@ function start() {
     }
 }
 
+function resetBoard() {
+    for(let i = 0; i < 3; i++) {
+        for(let j = 0; j < 3; j++) {
+            board[i][j] = EMPTY;
+            elementBoard[i][j].classList.remove(playerIcon);
+            elementBoard[i][j].classList.remove(aiIcon);
+        }
+    }
+}
+
 function beginGame() {
     // Create board
     const mainContainer = document.getElementById('main-container');
@@ -254,13 +262,7 @@ function beginGame() {
     resetButton.classList.add('cell');
     resetButton.textContent = 'Reset';
     resetButton.addEventListener('click', () => {
-        for(let i = 0; i < 3; i++) {
-            for(let j = 0; j < 3; j++) {
-                board[i][j] = EMPTY;
-                elementBoard[i][j].classList.remove(playerIcon);
-                elementBoard[i][j].classList.remove(aiIcon);
-            }
-        }
+        resetBoard();
     });
     btnContainer.appendChild(resetButton);
     gameContainer.appendChild(btnContainer);
@@ -274,6 +276,7 @@ function beginGame() {
             gridContainer.appendChild(cell);
         }
     }
+    resetBoard();
     gameContainer.appendChild(gridContainer);
     mainContainer.appendChild(gameContainer);
     let isUserTurn = true;
@@ -391,6 +394,7 @@ function createGameOver() {
     playAgainButton.addEventListener('click', () => {
         removeMainElements();
         beginGame();
+        resetBoard();
     });
 
     btnContainer.appendChild(backToMenuButton);
