@@ -177,9 +177,7 @@ function start() {
     let startBtn = document.getElementById('start-btn');
     startBtn.addEventListener('click', () => {
         if(iconSelected !== -1 && difSelected !== -1) {
-            while(mainContainer.firstChild!=null) {
-                mainContainer.removeChild(mainContainer.firstChild);
-            }
+            removeMainElements();
             if (difSelected === 0) {
                 maxDepth = 1;
             } else if (difSelected === 1) {
@@ -245,9 +243,7 @@ function beginGame() {
     backButton.classList.add('cell');
     backButton.textContent = 'Back';
     backButton.addEventListener('click', () => {
-        while(mainContainer.firstChild!=null) {
-            mainContainer.removeChild(mainContainer.firstChild);
-        }
+        removeMainElements();
         createMainMenu();
     });
     btnContainer.appendChild(backButton);
@@ -290,18 +286,16 @@ function beginGame() {
                     board[i][j] = PLAYER;
                     isUserTurn = false;
                 }
-                if(isWin(board)) {
-                    console.log('USER WON');
+                if(isGameOver(board)) {
+                    createGameOver();
                     return;
                 }
                 let move = getMove(board);
                 board[move[0]][move[1]] = AI;
                 elementBoard[move[0]][move[1]].classList.add(aiIcon);
                 isUserTurn = true;
-                if(isWin(board)) {
-                    console.log('AI WON');
-                } else if(isDraw(board)) {
-                    console.log('DRAW');
+                if(isGameOver(board)) {
+                    createGameOver();
                 }
             });
         }
@@ -362,6 +356,56 @@ function createMainMenu() {
     mainContainer.appendChild(iconContainer);
     mainContainer.appendChild(startContainer);
     mainContainer.appendChild(difContainer);
+    start();
 }
 
+function createGameOver() {
+    removeMainElements();
+    const mainContainer = document.getElementById('main-container');
+    const gameOverContainer = document.createElement('div');
+    gameOverContainer.className = 'game-over-container';
+    const gameOverLabel = document.createElement('div');
+    gameOverLabel.className = 'game-over-label';
+    if(isWin(board) === AI) {
+        gameOverLabel.textContent = 'YOU LOSE';
+    } else if(isWin(board) === PLAYER) {
+        gameOverLabel.textContent = 'YOU WON';
+    } else {
+        gameOverLabel.textContent = 'DRAW';
+    }
+
+    const btnContainer = document.createElement('div');
+    btnContainer.className = 'btn-container';
+
+    const backToMenuButton = document.createElement('button');
+    backToMenuButton.className = 'cell';
+    backToMenuButton.textContent = 'Back to Menu';
+    backToMenuButton.addEventListener('click', () => {
+        removeMainElements();
+        createMainMenu();
+    });
+
+    const playAgainButton = document.createElement('button');
+    playAgainButton.className = 'cell';
+    playAgainButton.textContent = 'Play Again';
+    playAgainButton.addEventListener('click', () => {
+        removeMainElements();
+        beginGame();
+    });
+
+    btnContainer.appendChild(backToMenuButton);
+    btnContainer.appendChild(playAgainButton);
+
+    gameOverContainer.appendChild(gameOverLabel);
+    gameOverContainer.appendChild(btnContainer);
+
+    mainContainer.appendChild(gameOverContainer);
+}
+
+function removeMainElements() {
+    const mainContainer = document.getElementById('main-container');
+    while(mainContainer.firstChild != null) {
+        mainContainer.removeChild(mainContainer.firstChild);
+    }
+}
 start();
