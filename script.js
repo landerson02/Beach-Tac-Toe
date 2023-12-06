@@ -93,7 +93,6 @@ function minimax(board, depth, isMaxPlayer) {
                     let moveScore = result.score
                     board[i][j] = EMPTY;
                     if(moveScore > bestScore) {
-                        console.log(moveScore);
                         bestScore = moveScore;
                         bestMove = [i, j];
                     }
@@ -233,8 +232,43 @@ function start() {
 function beginGame() {
     // Create board
     const mainContainer = document.getElementById('main-container');
+    const gameContainer = document.createElement('div');
+    gameContainer.classList.add('game-container');
     const gridContainer = document.createElement('div');
     gridContainer.classList.add('grid-container');
+    const btnContainer = document.createElement('div');
+    btnContainer.classList.add('btn-container');
+    const backButton = document.createElement('button');
+
+    // Add back button
+    backButton.classList.add('back-btn');
+    backButton.classList.add('cell');
+    backButton.textContent = 'Back';
+    backButton.addEventListener('click', () => {
+        while(mainContainer.firstChild!=null) {
+            mainContainer.removeChild(mainContainer.firstChild);
+        }
+        createMainMenu();
+    });
+    btnContainer.appendChild(backButton);
+
+    // Add reset button
+    const resetButton = document.createElement('button');
+    resetButton.classList.add('reset-btn');
+    resetButton.classList.add('cell');
+    resetButton.textContent = 'Reset';
+    resetButton.addEventListener('click', () => {
+        for(let i = 0; i < 3; i++) {
+            for(let j = 0; j < 3; j++) {
+                board[i][j] = EMPTY;
+                elementBoard[i][j].classList.remove(playerIcon);
+                elementBoard[i][j].classList.remove(aiIcon);
+            }
+        }
+    });
+    btnContainer.appendChild(resetButton);
+    gameContainer.appendChild(btnContainer);
+
     for(let i = 0; i < 3; i++) {
         for(let j = 0; j < 3; j++) {
             let cell = document.createElement('button');
@@ -244,8 +278,8 @@ function beginGame() {
             gridContainer.appendChild(cell);
         }
     }
-    console.log(elementBoard);
-    mainContainer.appendChild(gridContainer);
+    gameContainer.appendChild(gridContainer);
+    mainContainer.appendChild(gameContainer);
     let isUserTurn = true;
     for(let i = 0; i < 3; i++) {
         for(let j = 0; j < 3; j++) {
@@ -261,7 +295,6 @@ function beginGame() {
                     return;
                 }
                 let move = getMove(board);
-                console.log(move);
                 board[move[0]][move[1]] = AI;
                 elementBoard[move[0]][move[1]].classList.add(aiIcon);
                 isUserTurn = true;
@@ -274,3 +307,61 @@ function beginGame() {
         }
     }
 }
+
+function createMainMenu() {
+    const mainContainer = document.getElementById('main-container');
+    // Create main divs
+    const iconContainer = document.createElement('div');
+    iconContainer.className = 'choice-grid';
+    iconContainer.id = 'icon-container';
+
+    const startContainer = document.createElement('div');
+    startContainer.className = 'start-container';
+
+    const difContainer = document.createElement('div');
+    difContainer.className = 'choice-grid';
+    difContainer.id = 'dif-container';
+
+    // Create inner elements for iconContainer
+    const iconLabel = document.createElement('div');
+    iconLabel.className = 'cell choice-label';
+    iconLabel.textContent = 'Choose Your Icon';
+    iconContainer.appendChild(iconLabel);
+
+    const icons = ['ball', 'star', 'pineapple', 'flamingo'];
+    for (let i = 0; i < icons.length; i++) {
+        const iconButton = document.createElement('button');
+        iconButton.className = `cell ${icons[i]}`;
+        iconButton.id = `icon-${i}`;
+        iconContainer.appendChild(iconButton);
+    }
+
+    // Create inner elements for startContainer
+    const startButton = document.createElement('button');
+    startButton.className = 'cell';
+    startButton.id = 'start-btn';
+    startButton.textContent = 'Start';
+    startContainer.appendChild(startButton);
+
+    // Create inner elements for difContainer
+    const difLabel = document.createElement('div');
+    difLabel.className = 'cell choice-label';
+    difLabel.textContent = 'Choose Difficulty';
+    difContainer.appendChild(difLabel);
+
+    const difficulties = ['Easy', 'Medium', 'Hard', 'Impossible'];
+    for (let i = 0; i < difficulties.length; i++) {
+        const difButton = document.createElement('button');
+        difButton.className = 'cell dif';
+        difButton.id = `dif-${i}`;
+        difButton.textContent = difficulties[i];
+        difContainer.appendChild(difButton);
+    }
+
+    // Append main divs to the body or another container
+    mainContainer.appendChild(iconContainer);
+    mainContainer.appendChild(startContainer);
+    mainContainer.appendChild(difContainer);
+}
+
+start();

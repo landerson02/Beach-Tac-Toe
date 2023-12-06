@@ -43,7 +43,7 @@ body {
 }
 
 .cell {
-    border: 2px solid gray;
+    border: 2px solid grey;
     border-radius: 15px;
     transition: transform .4s ease;
     background-color: rgba(255, 255, 255, .3);
@@ -139,4 +139,32 @@ button.cell:hover {
     align-items: center;
     font-family: LemonJelly, serif;
     font-size: 60px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 450px;
+}
+
+#reset-btn {
+    grid-area: 3/1/3/3;
+    font-size: 60px;
+    font-family: LemonJelly, serif;
+}
+
+#back-btn {
+    grid-area: 3/1/3/3;
+    font-size: 60px;
+    font-family: LemonJelly, serif;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
 }
